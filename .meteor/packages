@@ -24,3 +24,4 @@ semantic:ui
 juliancwirko:postcss
 less
 jquery
+meteortesting:mocha
