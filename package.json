@@ -9,6 +9,7 @@
     "meteor-node-stubs": "^0.3.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-mounter": "^1.2.0"
+    "react-mounter": "^1.2.0",
+    "semantic-ui-react": "^0.80.2"
   }
 }
