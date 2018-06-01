@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 const API = new Restivus({
 	prettyJson: true
 });
@@ -8,7 +10,9 @@ Rest.addRoute('', {}, {
 	get: () => {
 		return {
 			statusCode: 200,
-			body: {}
+			body: {
+				release: Meteor.release
+			}
 		}
 	}
 });
