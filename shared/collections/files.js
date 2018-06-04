@@ -17,16 +17,12 @@ export const Files = new FilesCollection({
 	allowClientCode: false,
 	debug: Meteor.isServer && process.env.NODE_ENV === 'development',
 	onBeforeUpload(file) {
-		/*
-		if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.extension)) return true;
-		return 'Please upload image, with size equal or less than 10MB';
-		*/
 		return true;
 	},
 	onAfterUpload(file) {
 		// Move file to GridFS
 		Object.keys(file.versions).forEach(versionName => {
-			const metadata = {versionName, imageId: file._id, storedAt: new Date()}; // Optional
+			const metadata = {versionName, fileId: file._id, storedAt: new Date()}; // Optional
 			const writeStream = gfs.createWriteStream({filename: file.name, metadata});
 
 			fs.createReadStream(file.versions[versionName].path).pipe(writeStream);
