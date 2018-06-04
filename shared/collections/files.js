@@ -1,3 +1,7 @@
+/**
+ * https://github.com/VeliovGroup/Meteor-Files/wiki/GridFS-Integration
+ */
+
 import { Meteor } from 'meteor/meteor';
 import { FilesCollection } from 'meteor/ostrio:files';
 import Grid from 'gridfs-stream';
