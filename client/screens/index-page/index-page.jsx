@@ -11,4 +11,5 @@ export class IndexPage extends React.Component {
 			<div/>
 		);
 	}
+
 }
