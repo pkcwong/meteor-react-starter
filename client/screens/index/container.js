@@ -1,15 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { mount } from 'react-mounter';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Index } from "./index";
+import { IndexPage } from "./index-page";
 
 FlowRouter.route('/', {
 	action: () => {
-		mount(IndexContainer, {});
+		mount(IndexPageContainer, {});
 	}
 });
 
-export const IndexContainer = withTracker(() => {
+export const IndexPageContainer = withTracker(() => {
 	return {
 		Meteor: {
 			collection: {},
@@ -19,4 +19,4 @@ export const IndexContainer = withTracker(() => {
 			loggingIn: Meteor.loggingIn()
 		}
 	};
-})(Index);
+})(IndexPage);

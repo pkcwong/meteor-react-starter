@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Index extends React.Component {
+export class IndexPage extends React.Component {
 
 	constructor(props) {
 		super(props);
