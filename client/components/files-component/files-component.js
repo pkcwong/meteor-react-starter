@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Card, Dimmer, Image } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 import { Files } from "/shared/collections/files";
 
 /**
- * props: {file_id_s, onUpload, onRemove}
+ * props: {file_id_s, onUpload, onRemove, sudo}
  */
 export class FilesComponent extends React.Component {
 
@@ -70,13 +70,23 @@ export class FilesComponent extends React.Component {
 								})
 							}
 						</Image.Group>
-						<Button
-							icon="settings"
-							circular
-							onClick={() => {
-								$(".ui.modal").modal("show");
-							}}
-						/>
+						{
+							(() => {
+								if (this.props.sudo) {
+									return (
+										<Button
+											icon="settings"
+											circular
+											onClick={() => {
+												$(".ui.modal").modal("show");
+											}}
+										/>
+									)
+								} else {
+									return null;
+								}
+							})()
+						}
 					</Card.Content>
 				</Card>
 				<div
