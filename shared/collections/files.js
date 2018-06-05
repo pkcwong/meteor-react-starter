@@ -18,7 +18,7 @@ if (Meteor.isServer) {
 
 export const Files = new FilesCollection({
 	collectionName: 'files',
-	allowClientCode: false,
+	allowClientCode: true,
 	debug: Meteor.isServer && process.env.NODE_ENV === 'development',
 	onBeforeUpload(file) {
 		return true;
@@ -67,5 +67,5 @@ export const Files = new FilesCollection({
 });
 
 if (Meteor.isServer) {
-	Files.denyClient();
+	Files.allowClient();
 }
