@@ -3,7 +3,7 @@ import { Button, Card, Image } from 'semantic-ui-react';
 import { Files } from "/shared/collections/files";
 
 /**
- * props: {file_id_s, onUpload, onRemove, sudo}
+ * props: {file_id_s, onUpload, onRemove, onTargetChange, sudo, onMount}
  */
 export class FilesComponent extends React.Component {
 
@@ -61,9 +61,7 @@ export class FilesComponent extends React.Component {
 											src={link}
 											circular
 											onClick={() => {
-												this.setState({
-													target: item
-												});
+												this.setTarget(item);
 											}}
 										/>
 									);
@@ -78,7 +76,7 @@ export class FilesComponent extends React.Component {
 											icon="settings"
 											circular
 											onClick={() => {
-												$(".ui.modal").modal("show");
+												$("#files-component-modal").modal("show");
 											}}
 										/>
 									)
@@ -91,6 +89,7 @@ export class FilesComponent extends React.Component {
 				</Card>
 				<div
 					className="ui modal"
+					id="files-component-modal"
 				>
 					<div
 						className="header"
@@ -128,9 +127,9 @@ export class FilesComponent extends React.Component {
 								let file = Files.findOne({
 									_id: this.state.target
 								});
-								console.log(file);
 								if (file) {
 									file.remove();
+									this.props.onRemove(file);
 								}
 							}}
 						>
@@ -148,7 +147,7 @@ export class FilesComponent extends React.Component {
 								<Button
 									className="ui labeled icon button"
 									onClick={() => {
-										$("input[type='file']").click();
+										$("#files-component-file-input").click();
 									}}
 								>
 									<i
@@ -158,6 +157,7 @@ export class FilesComponent extends React.Component {
 								</Button>
 							</p>
 							<input
+								id="files-component-file-input"
 								type="file"
 								hidden
 								onChange={(e) => {
@@ -177,7 +177,7 @@ export class FilesComponent extends React.Component {
 										});
 										upload.start();
 									}
-									$("input[type='file']").val("");
+									$("#files-component-file-input").val("");
 								}}
 							/>
 							<Image.Group
@@ -201,9 +201,7 @@ export class FilesComponent extends React.Component {
 												className="ui tiny image"
 												src={link}
 												onClick={() => {
-													this.setState({
-														target: item
-													});
+													this.setTarget(item);
 												}}
 											/>
 										);
@@ -217,12 +215,27 @@ export class FilesComponent extends React.Component {
 		);
 	}
 
-	componentDidUpdate() {
-		if (this.state.target === null && this.props.file_id_s.length !== 0) {
-			this.setState({
-				target: this.props.file_id_s[0]
+	componentDidMount() {
+		if (this.props.onMount) {
+			this.props.onMount({
+				setTarget: (file_id) => {
+					this.setTarget(file_id);
+				}
 			});
 		}
+	}
+
+	componentDidUpdate() {
+		if (this.state.target === null && this.props.file_id_s.length !== 0) {
+			this.setTarget(this.props.file_id_s[0]);
+		}
+	}
+
+	setTarget(file_id) {
+		this.setState({
+			target: file_id
+		});
+		this.props.onTargetChange(file_id);
 	}
 
 }
