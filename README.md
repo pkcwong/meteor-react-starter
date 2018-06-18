@@ -1,6 +1,6 @@
 # meteor-react-starter
 
-A starter repo to building a web application using ReactJS, using the MeteorJS framework. For mobile app development, check this other [repository](https://github.com/pkcwong/react-native-meteor-starter.git), compatible with this starter repo.
+A starter repo to building a web application with ReactJS, using the MeteorJS framework. For mobile app development, check this other [repository](https://github.com/pkcwong/react-native-meteor-starter.git), compatible with this starter repo.
 
 ### Prerequisites and Installation
 
