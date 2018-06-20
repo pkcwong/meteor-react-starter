@@ -1,6 +1,10 @@
 # meteor-react-starter
 
-A starter repo to building a web application with ReactJS, using the MeteorJS framework. For mobile app development, check this other [repository](https://github.com/pkcwong/react-native-meteor-starter.git), compatible with this starter repo.
+https://github.com/pkcwong/meteor-react-starter
+
+A starter repo to building a web application with ReactJS, using the MeteorJS framework. For mobile app development, check this other [project](https://github.com/pkcwong/react-native-meteor-starter.git), compatible with this starter repo.
+
+More resource may be found in the [wiki](https://github.com/pkcwong/meteor-react-starter/wiki).
 
 ### Prerequisites and Installation
 
@@ -17,16 +21,23 @@ Verify the installation.
     meteor --version
 ```
 
-### Deploy
+### Deployment
 
 Fork or clone this repository.
 
 ```bash
     git clone https://github.com/pkcwong/meteor-react-starter.git
     cd meteor-react-starter
+    meteor npm install
     meteor
 ```
 
+### Resource
+
+- official tutorial for [ReactJS](https://reactjs.org/)
+- official tutorial for [MeteorJS + ReactJS](https://www.meteor.com/tutorials/react/creating-an-app)
+- check out the [wiki](https://github.com/pkcwong/meteor-react-starter/wiki) for extra tips and guidelines
+
 ### Contributing
 
-- Christopher Wong (pkcwong)
+- Christopher Wong [@pkcwong](https://github.com/pkcwong)
