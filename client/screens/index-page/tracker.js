@@ -1,15 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { mount } from 'react-mounter';
 import { withTracker } from 'meteor/react-meteor-data';
 import { IndexPage } from "./index-page";
 
-FlowRouter.route('/', {
-	action: () => {
-		mount(IndexPageContainer, {});
-	}
-});
-
-export const IndexPageContainer = withTracker(() => {
+export const IndexPageTracker = withTracker(() => {
 	return {
 		Meteor: {
 			collection: {},
