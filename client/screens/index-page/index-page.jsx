@@ -8,7 +8,7 @@ export class IndexPage extends React.Component {
 
 	render() {
 		return (
-			<div/>
+			<React.Fragment/>
 		);
 	}
 
