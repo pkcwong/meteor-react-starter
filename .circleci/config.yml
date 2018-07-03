@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: meteor/circleci
+    steps:
+      - checkout
+      - run: 'curl https://install.meteor.com | /bin/sh'
+      - run: 'meteor npm install'
+      - run: 'npm test'
