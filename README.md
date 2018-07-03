@@ -32,6 +32,17 @@ Fork or clone this repository.
     meteor
 ```
 
+### Support and Update
+
+This repo is being updated time to time, to receive the latest updates do the following.
+
+```bash
+    git remote add pk https://github.com/pkcwong/meteor-react-starter.git
+    git pull pk master
+```
+
+Post your enquiries on [issues](https://github.com/pkcwong/meteor-react-starter/issues) page, it will be addressed as soon as possible.
+
 ### Resource
 
 - official tutorial for [ReactJS](https://reactjs.org/)
