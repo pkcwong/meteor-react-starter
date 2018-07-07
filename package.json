@@ -7,10 +7,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
+    "bootstrap": "^4.1.1",
     "gridfs-stream": "^1.1.1",
     "meteor-node-stubs": "^0.3.2",
     "postcss-load-config": "^1.2.0",
+    "prop-types": "^15.6.2",
     "react": "^16.4.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
     "react-mounter": "^1.2.0",
     "semantic-ui-react": "^0.80.2"
