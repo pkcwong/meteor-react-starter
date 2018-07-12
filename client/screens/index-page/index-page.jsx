@@ -27,7 +27,7 @@ class Component extends React.Component {
 
 }
 
-export const Tracker = withTracker(() => {
+const Tracker = withTracker(() => {
 	return {
 		Meteor: {
 			collection: {},
