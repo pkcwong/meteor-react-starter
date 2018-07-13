@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 import { MeteorReducer } from "./reducers/meteor-reducer";
 import { MeteorSaga } from "./actions/meteor-saga";
 
@@ -11,7 +11,7 @@ export const store = createStore(combineReducers({
 }), applyMiddleware(saga));
 
 saga.run(function* () {
-	yield [
-		fork(MeteorSaga)
-	];
+	yield all([
+		MeteorSaga
+	].map(fork));
 });
