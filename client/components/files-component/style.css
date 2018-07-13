@@ -1,9 +1,0 @@
-.ui.page.modals.transition.visible {
-    display: flex !important;
-}
-
-.ui.modal > .content > .icon + .description, .ui.modal > .content > .image + .description {
-    flex-grow: 1 !important;
-    flex-shrink: 0 !important;
-    flex-basis: auto !important;
-}

@@ -1,9 +1,11 @@
 import { mount } from 'react-mounter';
-import { IndexPageTracker } from "./tracker";
+import { store } from "../../store";
+import { IndexPage } from "./index-page";
 
 FlowRouter.route('/', {
 	action: (params) => {
-		mount(IndexPageTracker, {
+		mount(IndexPage, {
+			store: store,
 			params: params
 		});
 	}
