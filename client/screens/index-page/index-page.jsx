@@ -44,5 +44,5 @@ export const IndexPage = connect((store) => {
 		server: {
 			release: store['MeteorReducer']['release']
 		}
-	}
+	};
 })(Tracker);

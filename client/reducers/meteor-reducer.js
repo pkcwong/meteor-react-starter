@@ -1,5 +1,5 @@
 const initialState = {
-	release: ""
+	release: ''
 };
 
 export const MeteorReducer = (state = initialState, action) => {

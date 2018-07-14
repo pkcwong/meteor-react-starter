@@ -26,18 +26,21 @@ export const Files = new FilesCollection({
 	onAfterUpload(file) {
 		// Move file to GridFS
 		Object.keys(file.versions).forEach(versionName => {
-			const metadata = {versionName, fileId: file._id, storedAt: new Date()}; // Optional
-			const writeStream = gfs.createWriteStream({filename: file.name, metadata});
+			const metadata = { versionName, fileId: file._id, storedAt: new Date() }; // Optional
+			const writeStream = gfs.createWriteStream({ filename: file.name, metadata });
 
 			fs.createReadStream(file.versions[versionName].path).pipe(writeStream);
 
-			writeStream.on('close', Meteor.bindEnvironment(file => {
+			writeStream.on('close', Meteor.bindEnvironment(uploadedFile => {
 				const property = `versions.${versionName}.meta.gridFsFileId`;
-
 				// If we store the ObjectID itself, Meteor (EJSON?) seems to convert it to a
 				// LocalCollection.ObjectID, which GFS doesn't understand.
-				this.collection.update(file._id, {$set: {[property]: file._id.toString()}});
-				this.unlink(this.collection.findOne(file._id), versionName); // Unlink files from FS
+				this.collection.update(file._id.toString(), {
+					$set: {
+						[property]: uploadedFile._id.toString()
+					}
+				});
+				this.unlink(this.collection.findOne(file._id.toString()), versionName); // Unlink file by version from FS
 			}));
 		});
 	},
@@ -45,7 +48,7 @@ export const Files = new FilesCollection({
 		// Serve file from GridFS
 		const _id = (file.versions[versionName].meta || {}).gridFsFileId;
 		if (_id) {
-			const readStream = gfs.createReadStream({_id});
+			const readStream = gfs.createReadStream({ _id });
 			readStream.on('error', err => {
 				throw err;
 			});
@@ -58,7 +61,7 @@ export const Files = new FilesCollection({
 		files.forEach(file => {
 			Object.keys(file.versions).forEach(versionName => {
 				const _id = (file.versions[versionName].meta || {}).gridFsFileId;
-				if (_id) gfs.remove({_id}, err => {
+				if (_id) gfs.remove({ _id }, err => {
 					if (err) throw err;
 				});
 			});
