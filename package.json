@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "test": "meteor test --once --driver-package meteortesting:mocha"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
@@ -22,7 +22,14 @@
     "semantic-ui-react": "^0.80.2"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.1"
+    "@babel/core": "^7.0.0-beta.53",
+    "@babel/preset-env": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0-beta.53",
+    "autoprefixer": "^6.3.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.0",
+    "jest": "^23.4.1",
+    "regenerator-runtime": "^0.12.0"
   },
   "postcss": {
     "plugins": {
@@ -32,5 +39,8 @@
         ]
       }
     }
+  },
+  "jest": {
+    "rootDir": "client/"
   }
 }
