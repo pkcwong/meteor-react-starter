@@ -1,5 +1,5 @@
 import { mount } from 'react-mounter';
-import { store } from "../../store";
+import { store } from "../../redux/store";
 import { IndexPage } from "./index-page";
 
 FlowRouter.route('/', {
