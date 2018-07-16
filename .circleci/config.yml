@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: meteor/circleci
+      - image: meteor/circleci:latest
     steps:
       - checkout
       - run: 'curl https://install.meteor.com | /bin/sh'

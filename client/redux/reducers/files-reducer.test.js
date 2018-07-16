@@ -15,7 +15,7 @@ describe('FilesReducer', () => {
 			uploaded: ['0', '1']
 		});
 	});
-	it('reset', () => {
+	it('upload reset', () => {
 		expect(FilesReducer({
 			uploaded: ['0']
 		}, {
