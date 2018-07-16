@@ -3,6 +3,7 @@
 https://github.com/pkcwong/meteor-react-starter
 
 [![CircleCI](https://circleci.com/gh/pkcwong/meteor-react-starter/tree/master.svg?style=shield&circle-token=3ed9737e9ab3bbfff58c41f35eade85be8ed723f)](https://circleci.com/gh/pkcwong/meteor-react-starter/tree/master)
+[![codebeat badge](https://codebeat.co/badges/13b65138-02d6-4b22-b5bd-201644f6747a)](https://codebeat.co/projects/github-com-pkcwong-meteor-react-starter-master)
 
 A starter repo to building a web application with ReactJS, using the MeteorJS framework. For mobile app development, check this other [project](https://github.com/pkcwong/react-native-meteor-starter.git), compatible with this starter repo.
 
