@@ -13,6 +13,6 @@ export class FilesAction {
 				file: file
 			}
 		});
-	}
+	};
 
 }

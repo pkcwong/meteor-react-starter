@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { withTracker } from 'meteor/react-meteor-data';
 import React from 'react';
 import { connect } from 'react-redux';
+import { CounterAction } from "../../redux/actions/counter-action";
 
 class Component extends React.Component {
 
@@ -11,9 +12,36 @@ class Component extends React.Component {
 
 	render() {
 		return (
-			<div/>
+			<React.Fragment>
+				<h1>
+					Welcome to Meteor!
+				</h1>
+				<p>
+					<button
+						onClick={this._handleCounterClick}
+					>
+						Click Me
+					</button>
+					<button
+						onClick={this._handleCounterReset}
+					>
+						Reset
+					</button>
+				</p>
+				<p>
+					You've pressed the button {this.props.counter} times.
+				</p>
+			</React.Fragment>
 		);
 	}
+
+	_handleCounterClick = () => {
+		CounterAction.increment();
+	};
+
+	_handleCounterReset = () => {
+		CounterAction.reset();
+	};
 
 }
 
@@ -30,5 +58,7 @@ const Tracker = withTracker(() => {
 })(Component);
 
 export const IndexPage = connect((store) => {
-	return {};
+	return {
+		counter: store['CounterReducer']['counter']
+	};
 })(Tracker);
