@@ -1,21 +1,18 @@
 import { CounterReducer } from "./counter-reducer";
+import { CounterAction } from "../actions/counter-action";
 
 describe('CounterReducer', () => {
 	it('increment counter', () => {
 		expect(CounterReducer({
 			counter: 0
-		}, {
-			type: 'Counter/INCREMENT'
-		})).toEqual({
+		}, CounterAction.increment())).toEqual({
 			counter: 1
 		});
 	});
 	it('reset counter', () => {
 		expect(CounterReducer({
 			counter: 1
-		}, {
-			type: 'Counter/RESET'
-		})).toEqual({
+		}, CounterAction.reset())).toEqual({
 			counter: 0
 		});
 	});
