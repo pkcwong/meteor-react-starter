@@ -14,7 +14,7 @@ describe('CounterReducer', () => {
 		expect(CounterReducer({
 			counter: 1
 		}, {
-			type: 'Counter/INCREMENT'
+			type: 'Counter/RESET'
 		})).toEqual({
 			counter: 0
 		});
