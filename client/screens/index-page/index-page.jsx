@@ -1,7 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Meteor } from "meteor/meteor";
 import { withTracker } from 'meteor/react-meteor-data';
-import React from 'react';
-import { connect } from 'react-redux';
 import { store } from "../../redux/store";
 import { CounterAction } from "../../redux/actions/counter-action";
 
