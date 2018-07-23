@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Meteor } from "meteor/meteor";
 import { withTracker } from 'meteor/react-meteor-data';
 import { store } from "../../redux/store";
 import { CounterAction } from "../../redux/actions/counter-action";
+import { Button } from 'react-bootstrap';
 
 class Component extends React.Component {
 
@@ -19,16 +19,16 @@ class Component extends React.Component {
 					Welcome to Meteor!
 				</h1>
 				<p>
-					<button
+					<Button
 						onClick={this._handleCounterClick}
 					>
 						Click Me
-					</button>
-					<button
+					</Button>
+					<Button
 						onClick={this._handleCounterReset}
 					>
 						Reset
-					</button>
+					</Button>
 				</p>
 				<p>
 					You've pressed the button {this.props.counter} times.
