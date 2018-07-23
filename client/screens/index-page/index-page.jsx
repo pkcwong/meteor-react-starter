@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Meteor } from "meteor/meteor";
 import { withTracker } from 'meteor/react-meteor-data';
-import { store } from "../../redux/store";
 import { CounterAction } from "../../redux/actions/counter-action";
-import { Button } from 'react-bootstrap';
+import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class Component extends React.Component {
 
@@ -33,16 +32,31 @@ class Component extends React.Component {
 				<p>
 					You've pressed the button {this.props.counter} times.
 				</p>
+				<ListGroup>
+					{
+						this.props.logs.reverse().map((item, index) => {
+							return (
+								<React.Fragment
+									key={index}
+								>
+									<ListGroupItem>
+										{JSON.stringify(item)}
+									</ListGroupItem>
+								</React.Fragment>
+							);
+						})
+					}
+				</ListGroup>
 			</React.Fragment>
 		);
 	}
 
 	_handleCounterClick = () => {
-		store.dispatch(CounterAction.increment());
+		this.props.store.dispatch(CounterAction.increment());
 	};
 
 	_handleCounterReset = () => {
-		store.dispatch(CounterAction.reset());
+		this.props.store.dispatch(CounterAction.reset());
 	};
 
 }
@@ -61,6 +75,7 @@ const Tracker = withTracker(() => {
 
 export const IndexPage = connect((store) => {
 	return {
+		logs: store['LoggerReducer']['logs'],
 		counter: store['CounterReducer']['counter']
 	};
 })(Tracker);
