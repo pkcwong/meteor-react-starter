@@ -3,19 +3,19 @@ export class CounterAction {
 	/**
 	 * Increments counter
 	 */
-	static increment() {
+	static increment = () => {
 		return {
 			type: 'Counter/INCREMENT'
 		};
-	}
+	};
 
 	/**
 	 * Resets counter
 	 */
-	static reset() {
+	static reset = () => {
 		return {
 			type: 'Counter/RESET'
 		};
-	}
+	};
 
 }
