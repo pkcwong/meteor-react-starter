@@ -1,5 +1,3 @@
-import { store } from "../store";
-
 export class FilesAction {
 
 	/**
@@ -7,12 +5,12 @@ export class FilesAction {
 	 * @param file
 	 */
 	static upload = (file) => {
-		store.dispatch({
+		return {
 			type: 'Files/UPLOAD',
 			payload: {
 				file: file
 			}
-		});
-	}
+		};
+	};
 
 }

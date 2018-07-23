@@ -18,11 +18,11 @@
     "react-mounter": "^1.2.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
-    "semantic-ui-react": "^0.80.2"
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.53",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0-beta.53",
     "autoprefixer": "^6.3.1",

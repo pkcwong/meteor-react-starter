@@ -20,7 +20,6 @@ kadira:flow-router
 react-meteor-data
 accounts-password@1.5.1
 nimble:restivus
-semantic:ui
 juliancwirko:postcss
 less@2.7.12
 jquery
