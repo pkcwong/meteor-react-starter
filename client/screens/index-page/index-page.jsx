@@ -34,7 +34,7 @@ class Component extends React.Component {
 				</p>
 				<ListGroup>
 					{
-						this.props.logs.reverse().map((item, index) => {
+						this.props.logs.map((item, index) => {
 							return (
 								<React.Fragment
 									key={index}
