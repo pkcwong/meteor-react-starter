@@ -1,23 +1,21 @@
-import { store } from "../store";
-
 export class CounterAction {
 
 	/**
 	 * Increments counter
 	 */
-	static increment = () => {
-		store.dispatch({
+	static increment() {
+		return {
 			type: 'Counter/INCREMENT'
-		});
-	};
+		};
+	}
 
 	/**
 	 * Resets counter
 	 */
-	static reset = () => {
-		store.dispatch({
+	static reset() {
+		return {
 			type: 'Counter/RESET'
-		});
-	};
+		};
+	}
 
 }

@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { withTracker } from 'meteor/react-meteor-data';
 import React from 'react';
 import { connect } from 'react-redux';
+import { store } from "../../redux/store";
 import { CounterAction } from "../../redux/actions/counter-action";
 
 class Component extends React.Component {
@@ -36,11 +37,11 @@ class Component extends React.Component {
 	}
 
 	_handleCounterClick = () => {
-		CounterAction.increment();
+		store.dispatch(CounterAction.increment());
 	};
 
 	_handleCounterReset = () => {
-		CounterAction.reset();
+		store.dispatch(CounterAction.reset());
 	};
 
 }
