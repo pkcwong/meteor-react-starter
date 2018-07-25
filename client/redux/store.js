@@ -18,7 +18,7 @@ export const store = createStore(combineReducers({
 saga.run(function* () {
 	yield all([
 		call(LoggerSaga),
-		[
+		...[
 			FilesSaga
 		].map(fork)
 	]);
