@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { all, fork } from 'redux-saga/effects';
+import { all, call, fork } from 'redux-saga/effects';
 import { LoggerReducer } from "./reducers/logger-reducer";
 import { CounterReducer } from "./reducers/counter-reducer";
 import { FilesReducer } from "./reducers/files-reducer";
@@ -17,7 +17,9 @@ export const store = createStore(combineReducers({
 
 saga.run(function* () {
 	yield all([
-		LoggerSaga,
-		FilesSaga
-	].map(fork));
+		call(LoggerSaga),
+		...[
+			FilesSaga
+		].map(fork)
+	]);
 });
