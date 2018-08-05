@@ -10,10 +10,6 @@
     "ROOT_URL": {
       "description": "Modify accordingly https://<PROJECT_NAME>.herokuapp.com",
       "value": "https://<PROJECT_NAME>.herokuapp.com"
-    },
-    "MONGO_URL": {
-      "description": "Copy from <MONGODB_URI> after deployment",
-      "value": "<MONGODB_URI>"
     }
   },
   "addons": [
