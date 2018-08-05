@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-
 	let root = Meteor.users.findOne({
 		username: 'root'
 	});
@@ -15,5 +14,4 @@ Meteor.startup(() => {
 		});
 		Roles.addUsersToRoles(user, ['root', 'administrator']);
 	}
-
 });

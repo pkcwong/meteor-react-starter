@@ -1,0 +1,25 @@
+{
+  "name": "meteor-react-starter",
+  "description": "A starter repo to building a web application with ReactJS, using the MeteorJS framework.",
+  "keywords": [
+    "react",
+    "meteor"
+  ],
+  "repository": "https://github.com/pkcwong/meteor-react-starter",
+  "env": {
+    "ROOT_URL": {
+      "description": "Modify accordingly https://<PROJECT_NAME>.herokuapp.com",
+      "value": "https://<PROJECT_NAME>.herokuapp.com"
+    }
+  },
+  "addons": [
+    {
+      "plan": "mongolab:sandbox"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/AdmitHub/meteor-buildpack-horse.git"
+    }
+  ]
+}
