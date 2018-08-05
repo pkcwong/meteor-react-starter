@@ -6,6 +6,16 @@
     "meteor"
   ],
   "repository": "https://github.com/pkcwong/meteor-react-starter",
+  "env": {
+    "ROOT_URL": {
+      "description": "https://<PROJECT_NAME>.herokuapp.com",
+      "value": null
+    },
+    "MONGO_URL": {
+      "description": "<MONGODB_URI>",
+      "value": null
+    }
+  },
   "addons": [
     {
       "plan": "mongolab:sandbox"
