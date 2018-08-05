@@ -8,12 +8,12 @@
   "repository": "https://github.com/pkcwong/meteor-react-starter",
   "env": {
     "ROOT_URL": {
-      "description": "https://<PROJECT_NAME>.herokuapp.com",
-      "value": null
+      "description": "Modify accordingly https://<PROJECT_NAME>.herokuapp.com",
+      "value": "https://<PROJECT_NAME>.herokuapp.com"
     },
     "MONGO_URL": {
-      "description": "<MONGODB_URI>",
-      "value": null
+      "description": "Copy from <MONGODB_URI> after deployment",
+      "value": "<MONGODB_URI>"
     }
   },
   "addons": [
