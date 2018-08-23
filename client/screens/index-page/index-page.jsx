@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Meteor } from "meteor/meteor";
+import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { CounterAction } from "../../redux/actions/counter-action";
 import { Button, Glyphicon, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
+import { CounterAction } from "../../redux/actions/counter-action";
 import { styles } from "./styles";
 
 class Component extends React.Component {
