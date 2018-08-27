@@ -1,4 +1,4 @@
-import { FilesReducer } from "./files-reducer";
+import { FilesReducer } from "../redux/reducers/files-reducer";
 
 describe('FilesReducer', () => {
 	it('upload file', () => {

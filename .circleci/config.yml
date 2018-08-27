@@ -7,5 +7,5 @@ jobs:
       - checkout
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
-      - run: 'npm test'
+      - run: 'npm test --verbose'
       - run: 'meteor test --once --driver-package meteortesting:mocha'
