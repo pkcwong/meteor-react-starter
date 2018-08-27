@@ -1,4 +1,4 @@
-import { LoggerReducer } from "./logger-reducer";
+import { LoggerReducer } from "../redux/reducers/logger-reducer";
 
 describe('LoggerReducer', () => {
 	it('log entry', () => {

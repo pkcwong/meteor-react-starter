@@ -1,5 +1,5 @@
-import { CounterReducer } from "./counter-reducer";
-import { CounterAction } from "../actions/counter-action";
+import { CounterReducer } from "../redux/reducers/counter-reducer";
+import { CounterAction } from "../redux/actions/counter-action";
 
 describe('CounterReducer', () => {
 	it('increment counter', () => {
