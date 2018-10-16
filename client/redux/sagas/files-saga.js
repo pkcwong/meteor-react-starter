@@ -1,8 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { Files } from "/shared/collections/files";
+import { FilesAction } from "../actions/files-action";
 
 export const FilesSaga = function* () {
-	yield takeEvery('Files/UPLOAD', function* (action) {
+	yield takeEvery(FilesAction.UPLOAD, function* (action) {
 		try {
 			let res = yield call((payload) => {
 				return new Promise((resolve, reject) => {
@@ -24,10 +25,18 @@ export const FilesSaga = function* () {
 				file: action['payload']['file']
 			});
 			yield put({
-				type: 'Files/UPLOAD-COMPLETE',
+				type: FilesAction.UPLOAD_COMPLETE,
 				payload: {
 					file: res
 				}
+			});
+			yield call((payload) => {
+				if (payload['callback'] !== null) {
+					payload['callback'](payload['file']);
+				}
+			}, {
+				file: res,
+				callback: action['payload']['callback']
 			});
 		} catch (err) {
 			console.error(err);
