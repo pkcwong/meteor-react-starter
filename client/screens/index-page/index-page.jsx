@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Button, Glyphicon, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
-import { CounterAction } from "../../redux/actions/counter-action";
+import { Glyphicon, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
 import { styles } from "./styles";
 
 class Component extends React.Component {
@@ -67,48 +66,6 @@ class Component extends React.Component {
 						bsStyle="success"
 					>
 						<Panel.Heading>
-							Redux Action Dispatch
-						</Panel.Heading>
-						<Panel.Body>
-							<p>
-								Demonstration of Redux store, reducer, and actions.
-							</p>
-							<p>
-								<Button
-									onClick={this._handleCounterClick}
-								>
-									Click Me
-								</Button>
-								<Button
-									onClick={this._handleCounterReset}
-								>
-									Reset
-								</Button>
-							</p>
-							<p>
-								You've pressed the button {this.props.counter} times.
-							</p>
-							<ListGroup>
-								{
-									this.props.logs.map((item, index) => {
-										return (
-											<React.Fragment
-												key={index}
-											>
-												<ListGroupItem>
-													{JSON.stringify(item)}
-												</ListGroupItem>
-											</React.Fragment>
-										);
-									})
-								}
-							</ListGroup>
-						</Panel.Body>
-					</Panel>
-					<Panel
-						bsStyle="success"
-					>
-						<Panel.Heading>
 							Meteor Users Collection
 						</Panel.Heading>
 						<Panel.Body>
@@ -161,14 +118,6 @@ class Component extends React.Component {
 		);
 	}
 
-	_handleCounterClick = () => {
-		this.props.store.dispatch(CounterAction.increment());
-	};
-
-	_handleCounterReset = () => {
-		this.props.store.dispatch(CounterAction.reset());
-	};
-
 }
 
 const Tracker = withTracker(() => {
@@ -188,7 +137,6 @@ const Tracker = withTracker(() => {
 
 export const IndexPage = connect((store) => {
 	return {
-		logs: store['LoggerReducer']['logs'],
-		counter: store['CounterReducer']['counter']
+		logs: store['LoggerReducer']['logs']
 	};
 })(Tracker);

@@ -2,7 +2,7 @@ export class FilesAction {
 
 	static UPLOAD = 'Files/UPLOAD';
 	static UPLOAD_COMPLETE = 'Files/UPLOAD-COMPLETE';
-	static RESET = 'Files/RESET';
+	static RESET = 'Files/UPLOAD-RESET';
 
 	/**
 	 * Uploads a file to GridFS
@@ -15,6 +15,15 @@ export class FilesAction {
 			payload: {
 				file: file,
 				callback: callback
+			}
+		};
+	};
+
+	static _UPLOAD_COMPLETE = (file) => {
+		return {
+			type: FilesAction.UPLOAD_COMPLETE,
+			payload: {
+				file: file
 			}
 		};
 	};
