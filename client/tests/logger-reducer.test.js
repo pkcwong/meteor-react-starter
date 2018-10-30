@@ -1,15 +1,11 @@
 import { LoggerReducer } from "../redux/reducers/logger-reducer";
+import { LoggerAction } from "../redux/actions/logger-action";
 
 describe('LoggerReducer', () => {
-	it('log entry', () => {
+	it('should log entry', () => {
 		expect(LoggerReducer({
 			logs: ['0']
-		}, {
-			type: 'Logger/WRITE-COMPLETE',
-			payload: {
-				log: '1'
-			}
-		})).toEqual({
+		}, LoggerAction._WRITE_COMPLETE('1'))).toEqual({
 			logs: [
 				'0',
 				'1'

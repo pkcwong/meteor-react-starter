@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Button, Glyphicon, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
-import { CounterAction } from "../../redux/actions/counter-action";
+import { Glyphicon, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
 import { styles } from "./styles";
+import { LocaleAction } from "../../redux/actions/locale-action";
 
 class Component extends React.Component {
 
@@ -19,16 +19,16 @@ class Component extends React.Component {
 					style={styles.page}
 				>
 					<h1>
-						Welcome to Meteor!
+						{this.props.strings['welcome']}
 					</h1>
 					<p>
-						A starter repo to building a web application with ReactJS, using the MeteorJS framework.
+						{this.props.strings['brief']}
 					</p>
 					<Panel
 						bsStyle="primary"
 					>
 						<Panel.Heading>
-							Bundled Packages
+							{this.props.strings['bundled-packages']}
 						</Panel.Heading>
 						<Panel.Body>
 							<div
@@ -37,29 +37,29 @@ class Component extends React.Component {
 								<a
 									href='https://github.com/pkcwong/meteor-react-starter'
 								>
-									{'GitHub Repository\t'}
+									{this.props.strings['github'] + '\t'}
 									<Glyphicon
 										glyph='new-window'
 									/>
 								</a>
 							</div>
 							<p>
-								List of used libraries and frameworks.
+								{this.props.strings['list-libraries']}
 							</p>
 							<ListGroupItem>
-								MeteorJS
+								{this.props.strings['meteor']}
 							</ListGroupItem>
 							<ListGroupItem>
-								react-meteor-data for MeteorJS reactivity
+								{this.props.strings['react-meteor-data']}
 							</ListGroupItem>
 							<ListGroupItem>
-								Restivus for HTTP Rest API
+								{this.props.strings['restivus']}
 							</ListGroupItem>
 							<ListGroupItem>
-								React-Bootstrap targeting Bootstrap v3
+								{this.props.strings['bootstrap']}
 							</ListGroupItem>
 							<ListGroupItem>
-								Redux with Redux Saga
+								{this.props.strings['redux']}
 							</ListGroupItem>
 						</Panel.Body>
 					</Panel>
@@ -67,53 +67,11 @@ class Component extends React.Component {
 						bsStyle="success"
 					>
 						<Panel.Heading>
-							Redux Action Dispatch
+							{this.props.strings['users-collection']}
 						</Panel.Heading>
 						<Panel.Body>
 							<p>
-								Demonstration of Redux store, reducer, and actions.
-							</p>
-							<p>
-								<Button
-									onClick={this._handleCounterClick}
-								>
-									Click Me
-								</Button>
-								<Button
-									onClick={this._handleCounterReset}
-								>
-									Reset
-								</Button>
-							</p>
-							<p>
-								You've pressed the button {this.props.counter} times.
-							</p>
-							<ListGroup>
-								{
-									this.props.logs.map((item, index) => {
-										return (
-											<React.Fragment
-												key={index}
-											>
-												<ListGroupItem>
-													{JSON.stringify(item)}
-												</ListGroupItem>
-											</React.Fragment>
-										);
-									})
-								}
-							</ListGroup>
-						</Panel.Body>
-					</Panel>
-					<Panel
-						bsStyle="success"
-					>
-						<Panel.Heading>
-							Meteor Users Collection
-						</Panel.Heading>
-						<Panel.Body>
-							<p>
-								Demonstration of fetching documents from MongoDB.
+								{this.props.strings['demo-documents']}
 							</p>
 							<ListGroup>
 								{
@@ -136,11 +94,11 @@ class Component extends React.Component {
 						bsStyle="success"
 					>
 						<Panel.Heading>
-							HTTP Rest API
+							{this.props.strings['http-rest']}
 						</Panel.Heading>
 						<Panel.Body>
 							<p>
-								Demonstration of Rest API.
+								{this.props.strings['demo-rest']}
 							</p>
 							<ListGroup>
 								<ListGroupItem
@@ -151,7 +109,7 @@ class Component extends React.Component {
 									<Glyphicon
 										glyph='send'
 									/>
-									{'\tMeteor Version'}
+									{'\t' + this.props.strings['version']}
 								</ListGroupItem>
 							</ListGroup>
 						</Panel.Body>
@@ -161,13 +119,9 @@ class Component extends React.Component {
 		);
 	}
 
-	_handleCounterClick = () => {
-		this.props.store.dispatch(CounterAction.increment());
-	};
-
-	_handleCounterReset = () => {
-		this.props.store.dispatch(CounterAction.reset());
-	};
+	componentDidMount() {
+		this.props.dispatch(LocaleAction.set('en'));
+	}
 
 }
 
@@ -189,6 +143,6 @@ const Tracker = withTracker(() => {
 export const IndexPage = connect((store) => {
 	return {
 		logs: store['LoggerReducer']['logs'],
-		counter: store['CounterReducer']['counter']
+		strings: store['LocaleReducer']['strings']
 	};
 })(Tracker);

@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  client:
     docker:
       - image: meteor/circleci:latest
     steps:
@@ -8,4 +8,19 @@ jobs:
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
       - run: 'npm test --verbose'
+  server:
+    docker:
+      - image: meteor/circleci:latest
+    steps:
+      - checkout
+      - run: 'curl https://install.meteor.com | /bin/sh'
+      - run: 'meteor npm install'
       - run: 'meteor test --once --driver-package meteortesting:mocha'
+workflows:
+  version: 2
+  client:
+    jobs:
+      - client
+  server:
+    jobs:
+      - server

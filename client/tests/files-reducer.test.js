@@ -1,27 +1,20 @@
 import { FilesReducer } from "../redux/reducers/files-reducer";
+import { FilesAction } from "../redux/actions/files-action";
 
 describe('FilesReducer', () => {
-	it('upload file', () => {
+	it('should upload file', () => {
 		expect(FilesReducer({
 			uploaded: ['0']
-		}, {
-			type: 'Files/UPLOAD-COMPLETE',
-			payload: {
-				file: {
-					_id: '1'
-				}
-			}
-		})).toEqual({
+		}, FilesAction._UPLOAD_COMPLETE({
+			_id: '1'
+		}))).toEqual({
 			uploaded: ['0', '1']
 		});
 	});
-	it('upload reset', () => {
+	it('should reset upload', () => {
 		expect(FilesReducer({
 			uploaded: ['0']
-		}, {
-			type: 'Files/UPLOAD-RESET',
-			payload: null
-		})).toEqual({
+		}, FilesAction.reset())).toEqual({
 			uploaded: []
 		});
 	});

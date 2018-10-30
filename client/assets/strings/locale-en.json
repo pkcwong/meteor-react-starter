@@ -1,0 +1,17 @@
+{
+  "welcome": "Welcome to Meteor!",
+  "brief": "A starter repo to building a web application with ReactJS, using the MeteorJS framework.",
+  "bundled-packages": "Bundled Packages",
+  "github": "GitHub Repository",
+  "list-libraries": "List of used libraries and frameworks.",
+  "meteor": "MeteorJS",
+  "react-meteor-data": "react-meteor-data for MeteorJS reactivity",
+  "restivus": "Restivus for HTTP Rest API",
+  "bootstrap": "React-Bootstrap targeting Bootstrap v3",
+  "redux": "Redux with Redux Saga",
+  "users-collection": "Meteor Users Collection",
+  "demo-documents": "Demonstration of fetching documents from MongoDB.",
+  "http-rest": "HTTP Rest API",
+  "demo-rest": "Demonstration of Rest API.",
+  "version": "Meteor Version"
+}
