@@ -4,6 +4,7 @@ import { Route, Router, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { IndexPage } from "./index-page/index-page";
 import { store } from "../redux/store";
+import "antd/dist/antd.css";
 
 const history = createBrowserHistory();
 

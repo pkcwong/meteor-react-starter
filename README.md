@@ -41,7 +41,7 @@ You may use this quick setup to deploy on [Heroku](https://dashboard.heroku.com/
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pkcwong/meteor-react-starter/tree/master)
 
-Demo App: https://meteor-react-starter.herokuapp.com/
+DemoComponent App: https://meteor-react-starter.herokuapp.com/
 
 ### Support and Update
 
