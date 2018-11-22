@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "test": "jest --verbose"
+    "test": "jest --ci"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
@@ -32,6 +32,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest": "^23.4.1",
+    "jest-junit": "^5.2.0",
     "postcss": "^6.0.22",
     "postcss-load-config": "^1.2.0",
     "regenerator-runtime": "^0.12.1"
@@ -46,6 +47,18 @@
     }
   },
   "jest": {
-    "rootDir": "client/"
+    "verbose": true,
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "server/"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "coverageDirectory": ".jest/coverage/"
+  },
+  "jest-junit": {
+    "outputDirectory": ".jest/junit/"
   }
 }
