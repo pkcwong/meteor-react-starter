@@ -11,7 +11,7 @@ jobs:
       - store_artifacts:
           path: '.reports/'
       - store_test_results:
-          path: './reports/jest/junit.xml'
+          path: '.reports/jest/junit.xml'
   server:
     docker:
       - image: meteor/circleci:latest
