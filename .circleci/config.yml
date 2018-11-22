@@ -8,7 +8,7 @@ jobs:
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
       - run: 'npm test'
-      - store_artifacts:
+      - store_test_results:
           path: '.reports/'
   server:
     docker:
