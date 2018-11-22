@@ -1,7 +1,6 @@
 export class LocaleAction {
 
 	static SET = 'Locale/SET';
-	static RESET = 'Locale/RESET';
 
 	/**
 	 * Sets the current language
@@ -19,12 +18,14 @@ export class LocaleAction {
 
 	/**
 	 * Resets the language
-	 * @param locale
 	 * @returns {{type: string}}
 	 */
-	static reset = (locale) => {
+	static reset = () => {
 		return {
-			type: LocaleAction.RESET
+			type: LocaleAction.SET,
+			payload: {
+				locale: 'en'
+			}
 		}
 	};
 

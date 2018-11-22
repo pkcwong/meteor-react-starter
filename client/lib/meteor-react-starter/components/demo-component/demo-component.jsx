@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Card, Icon, List } from 'antd';
 import { styles } from "./styles";
-import { LocaleAction } from "/client/redux/actions/locale-action";
 
 class Component extends React.Component {
 
