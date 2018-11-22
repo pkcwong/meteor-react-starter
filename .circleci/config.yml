@@ -7,10 +7,9 @@ jobs:
       - checkout
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
-      - run:
-          command: 'npm test'
-          environment:
-            JEST_JUNIT_OUTPUT: '.jest/junit/junit.xml'
+      - run: 'npm test'
+      - store_artifacts:
+          path: '.reports/'
   server:
     docker:
       - image: meteor/circleci:latest
