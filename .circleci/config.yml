@@ -8,8 +8,10 @@ jobs:
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
       - run: 'npm test'
-      - store_test_results:
+      - store_artifacts:
           path: '.reports/'
+      - store_test_results:
+          path: './reports/jest/junit.xml'
   server:
     docker:
       - image: meteor/circleci:latest
