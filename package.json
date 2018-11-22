@@ -59,7 +59,6 @@
     "coverageDirectory": ".reports/jest/coverage/"
   },
   "jest-junit": {
-    "outputDirectory": ".reports/jest/",
-    "outputName": "./results.xml"
+    "outputDirectory": ".reports/jest/"
   }
 }
