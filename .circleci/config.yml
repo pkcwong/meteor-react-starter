@@ -7,7 +7,11 @@ jobs:
       - checkout
       - run: 'curl https://install.meteor.com | /bin/sh'
       - run: 'meteor npm install'
-      - run: 'npm test --verbose'
+      - run: 'npm test'
+      - store_artifacts:
+          path: '.reports/'
+      - store_test_results:
+          path: '.reports/jest/'
   server:
     docker:
       - image: meteor/circleci:latest
