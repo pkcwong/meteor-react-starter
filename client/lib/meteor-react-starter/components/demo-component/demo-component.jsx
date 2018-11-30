@@ -76,6 +76,7 @@ class Component extends React.Component {
 						title={this.props.strings['demo-files']}
 					>
 						<input
+							hidden={true}
 							type='file'
 							onChange={(e) => {
 								const file = e.target.files[0];
@@ -87,6 +88,15 @@ class Component extends React.Component {
 								}));
 							}}
 						/>
+						<Button
+							type='primary'
+							icon='upload'
+							onClick={() => {
+								$('input[type="file"]').click();
+							}}
+						>
+							Upload File
+						</Button>
 						<List
 							dataSource={this.props.Meteor.collection.files}
 							renderItem={(item) => {
@@ -98,13 +108,16 @@ class Component extends React.Component {
 											{item._id}
 										</a>
 										<Button
-											type="danger"
-											icon="delete"
-											size="small"
+											type='danger'
+											icon='delete'
+											size='small'
 											onClick={() => {
-												Files.remove({
-													_id: item._id
-												});
+												this.props.dispatch(FilesAction.remove(item._id, () => {
+													notification.open({
+														message: 'Files',
+														description: 'file ' + item._id + ' removed'
+													});
+												}));
 											}}
 										/>
 									</List.Item>

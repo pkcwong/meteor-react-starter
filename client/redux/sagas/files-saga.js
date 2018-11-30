@@ -3,27 +3,6 @@ import { Files } from "/shared/collections/files";
 import { FilesAction } from "../actions/files-action";
 
 export const FilesSaga = function* () {
-	yield takeEvery(FilesAction.LOAD, function* (action) {
-		try {
-			let file = yield call((payload) => {
-				return new Promise((resolve) => {
-					resolve(Files.findOne({
-						_id: payload['_id']
-					}));
-				});
-			}, {
-				_id: action.payload['_id']
-			});
-			yield call((payload) => {
-				action.callback(null, payload);
-			}, {
-				uri: file.link()
-			});
-		} catch (err) {
-			console.error(err);
-			action.callback(err, null);
-		}
-	});
 	yield takeEvery(FilesAction.UPLOAD, function* (action) {
 		try {
 			let file = yield call((payload) => {
@@ -51,6 +30,25 @@ export const FilesSaga = function* () {
 				_id: file._id,
 				uri: Files.link(file)
 			});
+		} catch (err) {
+			console.error(err);
+			action.callback(err, null);
+		}
+	});
+	yield takeEvery(FilesAction.REMOVE, function* (action) {
+		try {
+			yield call((payload) => {
+				return new Promise((resolve) => {
+					resolve(Files.remove({
+						_id: payload['_id']
+					}));
+				});
+			}, {
+				_id: action.payload['_id']
+			});
+			yield call((payload) => {
+				action.callback(null, payload);
+			}, null);
 		} catch (err) {
 			console.error(err);
 			action.callback(err, null);
