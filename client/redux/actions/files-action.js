@@ -1,8 +1,7 @@
 export class FilesAction {
 
 	static UPLOAD = 'Files/UPLOAD';
-	static UPLOAD_COMPLETE = 'Files/UPLOAD-COMPLETE';
-	static RESET = 'Files/UPLOAD-RESET';
+	static REMOVE = 'Files/REMOVE';
 
 	/**
 	 * Uploads a file to GridFS
@@ -13,29 +12,28 @@ export class FilesAction {
 		return {
 			type: FilesAction.UPLOAD,
 			payload: {
-				file: file,
-				callback: callback
-			}
-		};
-	};
-
-	static _UPLOAD_COMPLETE = (file) => {
-		return {
-			type: FilesAction.UPLOAD_COMPLETE,
-			payload: {
 				file: file
+			},
+			callback: callback ? callback : () => {
 			}
 		};
 	};
 
 	/**
-	 * Resets the upload cache
-	 * @returns {{type: string}}
+	 * Removes a file from GridFS
+	 * @param _id
+	 * @param callback
+	 * @returns {{type: string, payload: {_id: *}, callback: Function}}
 	 */
-	static reset = () => {
+	static remove = (_id, callback) => {
 		return {
-			type: FilesAction.RESET
-		};
-	};
+			type: FilesAction.REMOVE,
+			payload: {
+				_id: _id
+			},
+			callback: callback ? callback : () => {
+			}
+		}
+	}
 
 }

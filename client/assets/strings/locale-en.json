@@ -9,6 +9,7 @@
   "antd": "Ant Design",
   "redux": "Redux with Redux Saga",
   "demo-documents": "Demonstration of Fetching Documents",
+  "demo-files": "Demonstration of Files Uploads",
   "demo-rest": "Demonstration of Rest API",
   "version": "Meteor Version"
 }
