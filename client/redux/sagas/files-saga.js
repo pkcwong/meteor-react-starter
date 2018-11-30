@@ -1,11 +1,32 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 import { Files } from "/shared/collections/files";
 import { FilesAction } from "../actions/files-action";
 
 export const FilesSaga = function* () {
+	yield takeEvery(FilesAction.LOAD, function* (action) {
+		try {
+			let file = yield call((payload) => {
+				return new Promise((resolve) => {
+					resolve(Files.findOne({
+						_id: payload['_id']
+					}));
+				});
+			}, {
+				_id: action.payload['_id']
+			});
+			yield call((payload) => {
+				action.callback(null, payload);
+			}, {
+				uri: file.link()
+			});
+		} catch (err) {
+			console.error(err);
+			action.callback(err, null);
+		}
+	});
 	yield takeEvery(FilesAction.UPLOAD, function* (action) {
 		try {
-			let res = yield call((payload) => {
+			let file = yield call((payload) => {
 				return new Promise((resolve, reject) => {
 					const upload = Files.insert({
 						file: payload['file'],
@@ -22,24 +43,17 @@ export const FilesSaga = function* () {
 					upload.start();
 				});
 			}, {
-				file: action['payload']['file']
-			});
-			yield put({
-				type: FilesAction.UPLOAD_COMPLETE,
-				payload: {
-					file: res
-				}
+				file: action.payload['file']
 			});
 			yield call((payload) => {
-				if (payload['callback'] !== null) {
-					payload['callback'](payload['file']);
-				}
+				action.callback(null, payload);
 			}, {
-				file: res,
-				callback: action['payload']['callback']
+				_id: file._id,
+				uri: Files.link(file)
 			});
 		} catch (err) {
 			console.error(err);
+			action.callback(err, null);
 		}
 	});
 };

@@ -1,8 +1,35 @@
 export class FilesAction {
 
+	static LOAD = 'Files/LOAD';
+	static LOAD_COMPLETE = 'Files/LOAD-COMPLETE';
 	static UPLOAD = 'Files/UPLOAD';
-	static UPLOAD_COMPLETE = 'Files/UPLOAD-COMPLETE';
-	static RESET = 'Files/UPLOAD-RESET';
+
+	/**
+	 * Loads a file from GridFS
+	 * @param _id
+	 * @param callback
+	 * @returns {{type: string, payload: {_id: *}, callback: *}}
+	 */
+	static load = (_id, callback = null) => {
+		return {
+			type: FilesAction.LOAD,
+			payload: {
+				_id: _id
+			},
+			callback: callback ? callback : () => {
+			}
+		};
+	};
+
+	static __load_complete__ = (_id, uri) => {
+		return {
+			type: FilesAction.LOAD_COMPLETE,
+			payload: {
+				_id: _id,
+				uri: uri
+			}
+		};
+	};
 
 	/**
 	 * Uploads a file to GridFS
@@ -13,28 +40,10 @@ export class FilesAction {
 		return {
 			type: FilesAction.UPLOAD,
 			payload: {
-				file: file,
-				callback: callback
-			}
-		};
-	};
-
-	static _UPLOAD_COMPLETE = (file) => {
-		return {
-			type: FilesAction.UPLOAD_COMPLETE,
-			payload: {
 				file: file
+			},
+			callback: callback ? callback : () => {
 			}
-		};
-	};
-
-	/**
-	 * Resets the upload cache
-	 * @returns {{type: string}}
-	 */
-	static reset = () => {
-		return {
-			type: FilesAction.RESET
 		};
 	};
 

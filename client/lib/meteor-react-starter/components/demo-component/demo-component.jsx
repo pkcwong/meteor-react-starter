@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Card, Icon, List } from 'antd';
+import { Button, Card, Icon, List } from 'antd';
 import { styles } from "./styles";
+import { FilesAction } from "../../../../redux/actions/files-action";
+import { Files } from "../../../../../shared/collections/files";
 
 class Component extends React.Component {
 
@@ -71,6 +73,43 @@ class Component extends React.Component {
 						/>
 					</Card>
 					<Card
+						title={this.props.strings['demo-files']}
+					>
+						<input
+							type='file'
+							onChange={(e) => {
+								const file = e.target.files[0];
+								this.props.dispatch(FilesAction.upload(file, (err, res) => {
+									console.log(res);
+								}));
+							}}
+						/>
+						<List
+							dataSource={this.props.Meteor.collection.files}
+							renderItem={(item) => {
+								return (
+									<List.Item>
+										<a
+											href={Files.link(item)}
+										>
+											{item._id}
+										</a>
+										<Button
+											type="danger"
+											icon="delete"
+											size="small"
+											onClick={() => {
+												Files.remove({
+													_id: item._id
+												});
+											}}
+										/>
+									</List.Item>
+								);
+							}}
+						/>
+					</Card>
+					<Card
 						title={this.props.strings['demo-rest']}
 					>
 						<List.Item>
@@ -90,10 +129,12 @@ class Component extends React.Component {
 
 const Tracker = withTracker(() => {
 	Meteor.subscribe('users_db');
+	Meteor.subscribe('files_db');
 	return {
 		Meteor: {
 			collection: {
-				users: Meteor.users.find().fetch()
+				users: Meteor.users.find().fetch(),
+				files: Files.find().fetch()
 			},
 			user: Meteor.user(),
 			userId: Meteor.userId(),
