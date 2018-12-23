@@ -38,49 +38,48 @@ app.post('/api/upload', [
 app.put('/api/upload', [
 	_multerInstance.single('file')
 ], Meteor.bindEnvironment((request, response, next) => {
-		if (request.file !== undefined) {
-			_fs.stat(request.file.path, function (_statError, _statData) {
-				if (_statError === null) {
-					const _addFileMeta = {
-						fileName: request.file.originalname,
-						type: request.file.mimetype,
-						size: request.file.size
-					};
-					_fs.readFile(request.file.path, function (_readError, _readData) {
-						if (_readError === null) {
-							Files.write(_readData, _addFileMeta, function (_uploadError, _uploadData) {
-								if (_uploadError !== undefined) {
-									response.writeHead(201, {
-										'Content-Type': 'application/json'
-									});
-									response.end(JSON.stringify(_uploadData));
-								} else {
-									response.writeHead(500, {
-										'Content-Type': 'application/json'
-									});
-									response.end();
-								}
-								_fs.unlink(request.file.path);
-							}, true);
-						} else {
-							response.writeHead(500, {
-								'Content-Type': 'application/json'
-							});
-						}
-					});
-				} else {
+	if (request.file === undefined) {
+		response.writeHead(400, {
+			'Content-Type': 'application/json'
+		});
+		response.end();
+		return;
+	}
+	_fs.stat(request.file.path, (_statError, _statData) => {
+		if (_statError !== null) {
+			response.writeHead(500, {
+				'Content-Type': 'application/json'
+			});
+			response.end();
+			return;
+		}
+		const _addFileMeta = {
+			fileName: request.file.originalname,
+			type: request.file.mimetype,
+			size: request.file.size
+		};
+		_fs.readFile(request.file.path, (_readError, _readData) => {
+			if (_readError !== null) {
+				response.writeHead(500, {
+					'Content-Type': 'application/json'
+				});
+				response.end();
+				return;
+			}
+			Files.write(_readData, _addFileMeta, (_uploadError, _uploadData) => {
+				_fs.unlink(request.file.path);
+				if (_uploadError !== null) {
 					response.writeHead(500, {
 						'Content-Type': 'application/json'
 					});
 					response.end();
+					return;
 				}
-			});
-		}
-		else {
-			response.writeHead(400, {
-				'Content-Type': 'application/json'
-			});
-			response.end();
-		}
-	}
-));
+				response.writeHead(201, {
+					'Content-Type': 'application/json'
+				});
+				response.end(JSON.stringify(_uploadData));
+			}, true);
+		});
+	});
+}));
