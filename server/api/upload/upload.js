@@ -5,6 +5,7 @@ import { app } from "../express";
 
 const _multer = require('multer');
 const _fs = require('fs');
+const URL = require('url').URL;
 
 const _multerInstanceConfig = {
 	dest: '/tmp'
@@ -18,12 +19,13 @@ app.post('/api/upload', [
 	const file = Files.findOne({
 		_id: request.body['_id']
 	});
-	if (file !== null) {
+	if (file !== undefined) {
+		const url = new URL(file.link());
 		response.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
 		response.end(JSON.stringify({
-			url: file.link()
+			url: url.pathname
 		}));
 	} else {
 		response.writeHead(404, {
