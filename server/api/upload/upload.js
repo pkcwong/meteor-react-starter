@@ -33,7 +33,6 @@ app.post('/api/upload', [
 		'Content-Type': 'application/json'
 	});
 	response.end();
-
 }));
 
 app.put('/api/upload', [
