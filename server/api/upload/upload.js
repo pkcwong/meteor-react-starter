@@ -27,12 +27,13 @@ app.post('/api/upload', [
 		response.end(JSON.stringify({
 			url: url.pathname
 		}));
-	} else {
-		response.writeHead(404, {
-			'Content-Type': 'application/json'
-		});
-		response.end();
+		return;
 	}
+	response.writeHead(404, {
+		'Content-Type': 'application/json'
+	});
+	response.end();
+
 }));
 
 app.put('/api/upload', [
