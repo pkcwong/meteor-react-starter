@@ -19,6 +19,7 @@ class Component extends React.Component {
 				<div
 					style={styles.page}
 				>
+
 					<h1>
 						{this.props.strings['welcome']}
 					</h1>
