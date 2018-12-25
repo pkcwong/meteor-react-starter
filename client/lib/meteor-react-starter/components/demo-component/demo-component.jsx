@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Button, Card, Icon, List, notification } from 'antd';
+import { Avatar, Button, Card, Icon, List, notification } from 'antd';
 import { Files } from "/shared/collections/files";
 import { FilesAction } from "../../../../redux/actions/files-action";
 import { styles } from "./styles";
@@ -19,6 +19,7 @@ class Component extends React.Component {
 				<div
 					style={styles.page}
 				>
+
 					<h1>
 						{this.props.strings['welcome']}
 					</h1>
