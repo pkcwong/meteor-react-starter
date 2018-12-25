@@ -2,7 +2,7 @@ import { LocaleAction } from "../actions/locale-action";
 
 const extractor = (locale) => {
 	const strings = {
-		en: require('../../assets/strings/locale-en')
+		en: require('../../../public/assets/strings/locale-en')
 	};
 	if (strings[locale] !== null) {
 		return Object.assign({}, strings['en'], strings[locale]);
