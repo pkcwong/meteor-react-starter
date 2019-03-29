@@ -5,7 +5,7 @@ describe('LoggerReducer', () => {
 	it('should log entry', () => {
 		expect(LoggerReducer({
 			logs: ['0']
-		}, LoggerAction._WRITE_COMPLETE('1'))).toEqual({
+		}, LoggerAction.log('1'))).toEqual({
 			logs: [
 				'0',
 				'1'

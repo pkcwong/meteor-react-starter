@@ -2,7 +2,7 @@ export class LoggerAction {
 
 	static WRITE_COMPLETE = 'Logger/WRITE-COMPLETE';
 
-	static _WRITE_COMPLETE = (log) => {
+	static log = (log) => {
 		return {
 			type: LoggerAction.WRITE_COMPLETE,
 			payload: {

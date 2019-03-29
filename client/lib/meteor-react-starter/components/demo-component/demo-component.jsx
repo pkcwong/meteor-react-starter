@@ -52,9 +52,6 @@ class Component extends React.Component {
 								{this.props.strings['antd']}
 							</List.Item>
 							<List.Item>
-								{this.props.strings['restivus']}
-							</List.Item>
-							<List.Item>
 								{this.props.strings['redux']}
 							</List.Item>
 						</List>

@@ -5,7 +5,6 @@
   "github": "GitHub Repository",
   "meteor": "MeteorJS",
   "react-meteor-data": "react-meteor-data for MeteorJS reactivity",
-  "restivus": "Restivus for HTTP Rest API",
   "antd": "Ant Design",
   "redux": "Redux with Redux Saga",
   "demo-documents": "Demonstration of Fetching Documents",
