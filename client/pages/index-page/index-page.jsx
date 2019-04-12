@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { LocaleAction } from "../../redux/actions/locale-action";
-import { DemoComponent } from "../../lib/meteor-react-starter/components/demo-component/demo-component";
+import { DemoComponent } from "./demo-component/demo-component";
 
 class Component extends React.Component {
 
@@ -15,10 +14,6 @@ class Component extends React.Component {
 				<DemoComponent/>
 			</React.Fragment>
 		);
-	}
-
-	componentDidMount() {
-		this.props.dispatch(LocaleAction.set('en'));
 	}
 
 }

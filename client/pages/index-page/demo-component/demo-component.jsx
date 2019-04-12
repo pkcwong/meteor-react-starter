@@ -4,8 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Icon, List, notification } from 'antd';
 import { Files } from "/shared/collections/files";
-import { FilesAction } from "../../../../redux/actions/files-action";
+import { FilesAction } from "../../../redux/actions/files-action";
 import { styles } from "./styles";
+import { LocaleAction } from "../../../redux/actions/locale-action";
 
 class Component extends React.Component {
 
@@ -137,6 +138,11 @@ class Component extends React.Component {
 				</div>
 			</React.Fragment>
 		);
+	}
+
+	componentDidMount() {
+		this.props.dispatch(LocaleAction.load('en', require('./locale-en.json')));
+		this.props.dispatch(LocaleAction.set('en'));
 	}
 
 }
