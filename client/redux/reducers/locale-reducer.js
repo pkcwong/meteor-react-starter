@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const LocaleReducer = (state = initialState, action) => {
-	switch (action['type']) {
+	switch (action.type) {
 		case LocaleAction.LOAD: {
 			if (state.locale !== action.payload.locale) {
 				return Object.assign({}, state, {

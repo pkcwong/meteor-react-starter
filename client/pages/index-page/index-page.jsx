@@ -20,6 +20,6 @@ class Component extends React.Component {
 
 export const IndexPage = connect((store) => {
 	return {
-		logs: store['LoggerReducer']['logs']
+		LoggerReducer: store.LoggerReducer
 	};
 })(Component);
