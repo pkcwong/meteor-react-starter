@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DemoComponent } from "./demo-component/demo-component";
+import { LocaleAction } from "../../redux/actions/locale-action";
 
 class Component extends React.Component {
 
@@ -14,6 +15,10 @@ class Component extends React.Component {
 				<DemoComponent/>
 			</React.Fragment>
 		);
+	}
+
+	componentDidMount() {
+		this.props.dispatch(LocaleAction.set('en'));
 	}
 
 }
