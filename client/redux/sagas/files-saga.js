@@ -8,7 +8,7 @@ export const FilesSaga = function* () {
 			let file = yield call((payload) => {
 				return new Promise((resolve, reject) => {
 					const upload = Files.insert({
-						file: payload['file'],
+						file: payload.file,
 						streams: 'dynamic',
 						chunkSize: 'dynamic'
 					}, false);
@@ -22,7 +22,7 @@ export const FilesSaga = function* () {
 					upload.start();
 				});
 			}, {
-				file: action.payload['file']
+				file: action.payload.file
 			});
 			yield call((payload) => {
 				action.callback(null, payload);
@@ -40,11 +40,11 @@ export const FilesSaga = function* () {
 			yield call((payload) => {
 				return new Promise((resolve) => {
 					resolve(Files.remove({
-						_id: payload['_id']
+						_id: payload._id
 					}));
 				});
 			}, {
-				_id: action.payload['_id']
+				_id: action.payload._id
 			});
 			yield call((payload) => {
 				action.callback(null, payload);

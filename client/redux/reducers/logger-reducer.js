@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const LoggerReducer = (state = initialState, action) => {
-	switch (action['type']) {
+	switch (action.type) {
 		case LoggerAction.WRITE_COMPLETE: {
 			return Object.assign({}, state, {
 				logs: [
