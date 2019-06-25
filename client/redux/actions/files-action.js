@@ -25,7 +25,7 @@ export class FilesAction {
 	 * @param callback
 	 * @returns {{type: string, payload: {_id: *}, callback: Function}}
 	 */
-	static remove = (_id, callback) => {
+	static remove = (_id, callback = null) => {
 		return {
 			type: FilesAction.REMOVE,
 			payload: {
