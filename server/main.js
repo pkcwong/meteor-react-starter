@@ -1,17 +1,20 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from "meteor/meteor";
 
 Meteor.startup(() => {
-	let root = Meteor.users.findOne({
-		username: 'root'
+	const root = Meteor.users.findOne({
+		username: "root"
 	});
 	if (!root) {
 		let user = Accounts.createUser({
-			username: 'root',
-			password: 'root',
+			username: "root",
+			password: "root",
 			profile: {
-				name: 'Super User'
+				name: "Default User"
 			}
 		});
-		Roles.addUsersToRoles(user, ['root', 'administrator']);
+		Roles.addUsersToRoles(user, [
+			"root",
+			"administrator"
+		]);
 	}
 });

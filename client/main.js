@@ -1,20 +1,8 @@
-import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { store } from "./redux/store";
-import { Navigator } from "./pages/navigator";
-
-const App = () => {
-	return (
-		<Provider
-			store={store}
-		>
-			<Navigator/>
-		</Provider>
-	)
-};
+import React from "react";
+import { Meteor } from "meteor/meteor";
+import { render } from "react-dom";
+import { App } from "./App";
 
 Meteor.startup(() => {
-	render(<App/>, document.getElementById('root'));
+	render(<App/>, document.getElementById("root"));
 });

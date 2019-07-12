@@ -20,12 +20,12 @@ app.post('/api/upload', [
 		_id: request.body['_id']
 	});
 	if (file !== undefined) {
-		const url = new URL(file.link());
+		const uri = new URL(file.link());
 		response.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
 		response.end(JSON.stringify({
-			url: url.pathname
+			uri: uri.pathname
 		}));
 		return;
 	}
@@ -78,7 +78,10 @@ app.put('/api/upload', [
 				response.writeHead(201, {
 					'Content-Type': 'application/json'
 				});
-				response.end(JSON.stringify(_uploadData));
+				response.end(JSON.stringify({
+					..._uploadData,
+					//link: Files.link(_uploadData._id)
+				}));
 			}, true);
 		});
 	});

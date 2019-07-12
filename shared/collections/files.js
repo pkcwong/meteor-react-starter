@@ -18,7 +18,7 @@ if (Meteor.isServer) {
 
 export const Files = new FilesCollection({
 	collectionName: 'files',
-	allowClientCode: true,
+	allowClientCode: false,
 	debug: Meteor.isServer && process.env.NODE_ENV === 'development',
 	onBeforeUpload(file) {
 		return true;
@@ -26,8 +26,8 @@ export const Files = new FilesCollection({
 	onAfterUpload(file) {
 		// Move file to GridFS
 		Object.keys(file.versions).forEach(versionName => {
-			const metadata = { versionName, fileId: file._id, storedAt: new Date() }; // Optional
-			const writeStream = gfs.createWriteStream({ filename: file.name, metadata });
+			const metadata = {versionName, fileId: file._id, storedAt: new Date()}; // Optional
+			const writeStream = gfs.createWriteStream({filename: file.name, metadata});
 
 			fs.createReadStream(file.versions[versionName].path).pipe(writeStream);
 
@@ -48,7 +48,7 @@ export const Files = new FilesCollection({
 		// Serve file from GridFS
 		const _id = (file.versions[versionName].meta || {}).gridFsFileId;
 		if (_id) {
-			const readStream = gfs.createReadStream({ _id });
+			const readStream = gfs.createReadStream({_id});
 			readStream.on('error', err => {
 				throw err;
 			});
@@ -61,14 +61,10 @@ export const Files = new FilesCollection({
 		files.forEach(file => {
 			Object.keys(file.versions).forEach(versionName => {
 				const _id = (file.versions[versionName].meta || {}).gridFsFileId;
-				if (_id) gfs.remove({ _id }, err => {
+				if (_id) gfs.remove({_id}, err => {
 					if (err) throw err;
 				});
 			});
 		});
 	}
 });
-
-if (Meteor.isServer) {
-	Files.allowClient();
-}
