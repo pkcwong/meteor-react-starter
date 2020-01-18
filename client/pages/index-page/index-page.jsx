@@ -126,7 +126,7 @@ class Component extends React.Component {
 						</div>
 					</div>
 				</Card>
-				<Card style={styles.container} title="Upload Demo">
+				<Card style={styles.container} title="File Upload Demo">
 					<Card.Meta description="Upload files with progress feedback, files are stored in MongoDB GridFS."/>
 					<div style={styles.container}>
 						<div style={styles.halfContainer}>
